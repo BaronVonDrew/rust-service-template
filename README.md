@@ -19,4 +19,4 @@ you can then run using `cargo run`
 
 ## Docker
 
-To run using the Dockercompose you'll need to also add a .docker.env file which contains overrides for values in the .env file to be used when running docker (for example the host name of kafka if both are running in docker)
+To run using the docker-compose you'll need to also add a .docker.env file which contains overrides for values in the .env file to be used when running docker (for example the host name of kafka if both are running in docker)
