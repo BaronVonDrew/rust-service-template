@@ -5,10 +5,7 @@ RUN sudo apt-get update && sudo apt-get install libsasl2-dev libpq-dev -y
 
 # Add the source code (+fix file permissions) 
 ADD --chown=rust:rust src src
-ADD --chown=rust:rust migrations migrations
 ADD --chown=rust:rust Cargo.toml Cargo.toml
-ADD --chown=rust:rust diesel.toml diesel.toml
-ADD --chown=rust:rust .docker.env .env
 
 # Build
 RUN cargo build --release
