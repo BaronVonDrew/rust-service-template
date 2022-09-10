@@ -1,0 +1,21 @@
+version: '2'
+services:
+  rust-service:
+      build: .
+      environment:
+        DATABASE_URL: postgres://<user>:<password>@postgres/diesel_demo
+        BROKERS: kafka:9092
+        GROUP_ID: "test-group"
+      depends_on:
+        - postgres
+  postgres:
+      image: postgres
+      restart: always
+      environment:
+        POSTGRES_PASSWORD: <password>
+        POSTGRES_USER: <user>
+        POSTGRES_DB: 'diesel_demo'
+networks:
+  default: 
+    name: "kafka-apps"
+    external: true
