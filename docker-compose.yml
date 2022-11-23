@@ -1,10 +1,33 @@
-version: '2'
+version: '3'
 services:
   pricing:
-      build: .
+      build:
+        context: ../.
+        dockerfile: price_service/Dockerfile
+        target: service
       env_file: 
         - .env
-        - .docker.env               
+        - .docker.env
+  new_price:
+      build:
+        context: ../.
+        dockerfile: price_service/Dockerfile
+        target: consumers
+        args:
+          consumername: new_price
+      env_file: 
+        - .env
+        - .docker.env
+  new_instrument:
+      build:
+        context: ../.
+        dockerfile: price_service/Dockerfile
+        target: consumers
+        args:
+          consumername: add_new_instrument
+      env_file: 
+        - .env
+        - .docker.env 
 networks:
   default: 
     name: ${KAFKA_NETWORK}
